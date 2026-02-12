@@ -12,7 +12,7 @@ skipped; execution continues.
 
 
 import json
-from typing import Dict, Iterable
+from typing import Dict, Iterable, List, Tuple
 
 
 def _load_catalogue(path: str) -> Dict[str, float]:
@@ -59,3 +59,43 @@ def _group_sales(sales: Iterable[dict]) -> Dict[int, Dict]:
             "quantity": quantity,
         })
     return grouped
+
+def _format_report(
+    catalogue: Dict[str, float], grouped: Dict[int, Dict]
+) -> Tuple[str, float]:
+    """Build a human-readable report string and return (report, grand_total).
+
+    Missing products are reported in the report and treated as zero cost.
+    """
+    lines: List[str] = []
+    grand_total = 0.0
+    for sale_id in sorted(grouped.keys()):
+        sale = grouped[sale_id]
+        date = sale.get("date", "")
+        lines.append(f"Sale ID: {sale_id}  Date: {date}")
+        lines.append("  Product	UnitPrice	Quantity	LineTotal")
+        sale_total = 0.0
+        for entry in sale["lines"]:
+            product = entry["product"]
+            qty = entry["quantity"]
+            if product not in catalogue:
+                msg = (
+                    "Product not found in catalogue: '" + product + "' (Sale "
+                    + str(sale_id) + ")"
+                )
+                print(msg)
+                unit_price = 0.0
+                note = " [MISSING]"
+            else:
+                unit_price = catalogue[product]
+                note = ""
+            line_total = unit_price * qty
+            sale_total += line_total
+            lines.append(
+                f"  {product}\t{unit_price:.2f}\t{qty}\t{line_total:.2f}{note}"
+            )
+        lines.append(f"  Sale total: {sale_total:.2f}")
+        lines.append("")
+        grand_total += sale_total
+    report = "\n".join(lines)
+    return report, grand_total
