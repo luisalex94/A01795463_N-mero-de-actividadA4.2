@@ -12,6 +12,7 @@ skipped; execution continues.
 
 
 import json
+from time import time
 from typing import Dict, Iterable, List, Tuple
 
 
@@ -99,3 +100,58 @@ def _format_report(
         grand_total += sale_total
     report = "\n".join(lines)
     return report, grand_total
+
+
+def process_files(
+    catalogue_path: str,
+    sales_path: str,
+    output_path: str = "SalesResults.txt",
+) -> float:
+    """Main processing: load files, compute totals, print and write report.
+
+    Returns elapsed seconds.
+    """
+    start = time.perf_counter()
+    try:
+        catalogue = _load_catalogue(catalogue_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"Error loading catalogue: {exc}")
+        raise
+
+    try:
+        with open(sales_path, "r", encoding="utf-8") as infile:
+            sales_data = json.load(infile)
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"Error loading sales file: {exc}")
+        raise
+
+    if not isinstance(sales_data, list):
+        print("Sales JSON must be a list of sale records")
+        raise ValueError("Sales JSON must be a list")
+
+    grouped = _group_sales(sales_data)
+    report_body, grand_total = _format_report(catalogue, grouped)
+
+    header = "Sales Report"
+
+    print(header)
+    print("=" * len(header))
+    print(report_body)
+    print(f"Grand Total: {grand_total:.2f}")
+
+    try:
+        with open(output_path, "w", encoding="utf-8") as outfile:
+            outfile.write(header + "\n")
+            outfile.write(("=" * len(header)) + "\n")
+            outfile.write(report_body + "\n")
+            outfile.write(f"Grand Total: {grand_total:.2f}\n")
+    except OSError as exc:
+        print(f"Error writing output file: {exc}")
+        raise
+
+    elapsed = time.perf_counter() - start
+    elapsed_line = f"Elapsed time: {elapsed:.6f} seconds"
+    print(elapsed_line)
+    with open(output_path, "a", encoding="utf-8") as outfile:
+        outfile.write(elapsed_line + "\n")
+    return elapsed
