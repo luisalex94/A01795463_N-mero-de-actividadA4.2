@@ -12,6 +12,7 @@ skipped; execution continues.
 
 
 import json
+import sys
 from time import time
 from typing import Dict, Iterable, List, Tuple
 
@@ -155,3 +156,21 @@ def process_files(
     with open(output_path, "a", encoding="utf-8") as outfile:
         outfile.write(elapsed_line + "\n")
     return elapsed
+
+
+def _main(argv: Iterable[str]) -> int:
+    """Command-line entry point. Expects two file paths.
+    """
+    argv_list = list(argv)
+    if len(argv_list) != 3:
+        print("Usage: python compute_sales.py catalogue.json sales.json")
+        return 2
+    try:
+        process_files(argv_list[1], argv_list[2])
+    except (OSError, ValueError, json.JSONDecodeError):
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(_main(sys.argv))
