@@ -65,6 +65,37 @@ def _group_sales(sales: Iterable[dict]) -> Dict[int, Dict]:
     return grouped
 
 
+def _format_single_sale(
+    sale_id: int, sale: Dict, catalogue: Dict[str, float]
+) -> Tuple[List[str], float]:
+    """Format a single sale into lines and return (lines, sale_total).
+
+    This helper isolates locals so the parent function stays small.
+    """
+    sale_lines: List[str] = []
+    sale_total = 0.0
+    for entry in sale["lines"]:
+        product = entry["product"]
+        qty = entry["quantity"]
+        if product not in catalogue:
+            msg = (
+                "Product not found in catalogue: '" + product + "' (Sale "
+                + str(sale_id) + ")"
+            )
+            print(msg)
+            unit_price = 0.0
+            note = " [MISSING]"
+        else:
+            unit_price = catalogue[product]
+            note = ""
+        line_total = unit_price * qty
+        sale_total += line_total
+        sale_lines.append(
+            f"  {product}\t{unit_price:.2f}\t{qty}\t{line_total:.2f}{note}"
+        )
+    return sale_lines, sale_total
+
+
 def _format_report(
     catalogue: Dict[str, float], grouped: Dict[int, Dict]
 ) -> Tuple[str, float]:
@@ -78,27 +109,9 @@ def _format_report(
         sale = grouped[sale_id]
         date = sale.get("date", "")
         lines.append(f"Sale ID: {sale_id}  Date: {date}")
-        lines.append("  Product	UnitPrice	Quantity	LineTotal")
-        sale_total = 0.0
-        for entry in sale["lines"]:
-            product = entry["product"]
-            qty = entry["quantity"]
-            if product not in catalogue:
-                msg = (
-                    "Product not found in catalogue: '" + product + "' (Sale "
-                    + str(sale_id) + ")"
-                )
-                print(msg)
-                unit_price = 0.0
-                note = " [MISSING]"
-            else:
-                unit_price = catalogue[product]
-                note = ""
-            line_total = unit_price * qty
-            sale_total += line_total
-            lines.append(
-                f"  {product}\t{unit_price:.2f}\t{qty}\t{line_total:.2f}{note}"
-            )
+        lines.append("  Product\tUnitPrice\tQuantity\tLineTotal")
+        sale_lines, sale_total = _format_single_sale(sale_id, sale, catalogue)
+        lines.extend(sale_lines)
         lines.append(f"  Sale total: {sale_total:.2f}")
         lines.append("")
         grand_total += sale_total
