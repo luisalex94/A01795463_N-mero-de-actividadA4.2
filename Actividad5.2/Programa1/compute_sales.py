@@ -10,10 +10,11 @@ same report to ``SalesResults.txt``. Invalid entries are reported and
 skipped; execution continues.
 """
 
+from __future__ import annotations
 
 import json
 import sys
-from time import time
+import time
 from typing import Dict, Iterable, List, Tuple
 
 
@@ -39,6 +40,7 @@ def _load_catalogue(path: str) -> Dict[str, float]:
         catalogue[title] = price
     return catalogue
 
+
 def _group_sales(sales: Iterable[dict]) -> Dict[int, Dict]:
     """Group flat sales records by SALE_ID.
 
@@ -61,6 +63,7 @@ def _group_sales(sales: Iterable[dict]) -> Dict[int, Dict]:
             "quantity": quantity,
         })
     return grouped
+
 
 def _format_report(
     catalogue: Dict[str, float], grouped: Dict[int, Dict]
