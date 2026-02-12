@@ -12,7 +12,7 @@ skipped; execution continues.
 
 
 import json
-from typing import Dict
+from typing import Dict, Iterable
 
 
 def _load_catalogue(path: str) -> Dict[str, float]:
@@ -36,3 +36,26 @@ def _load_catalogue(path: str) -> Dict[str, float]:
             continue
         catalogue[title] = price
     return catalogue
+
+def _group_sales(sales: Iterable[dict]) -> Dict[int, Dict]:
+    """Group flat sales records by SALE_ID.
+
+    Returns a mapping SALE_ID -> {"date": str, "lines": [records...]}
+    """
+    grouped: Dict[int, Dict] = {}
+    for record in sales:
+        try:
+            sale_id = int(record["SALE_ID"])
+            sale_date = record.get("SALE_Date", "")
+            product = record["Product"]
+            quantity = int(record["Quantity"])
+        except (KeyError, TypeError, ValueError) as exc:
+            print(f"Invalid sales record skipped: {exc} -> {record}")
+            continue
+        if sale_id not in grouped:
+            grouped[sale_id] = {"date": sale_date, "lines": []}
+        grouped[sale_id]["lines"].append({
+            "product": product,
+            "quantity": quantity,
+        })
+    return grouped
