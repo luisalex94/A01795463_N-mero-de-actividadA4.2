@@ -1,0 +1,90 @@
+Sales Report
+============
+Sale ID: 1  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Rustic breakfast	21.32	200	4264.00
+  Sandwich with salad	22.48	23	517.04
+  Raw legums	17.11	11	188.21
+  Sale total: 4969.25
+
+Sale ID: 2  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Fresh stawberry	28.59	221	6318.39
+  Raw legums	17.11	2	34.22
+  Sale total: 6352.61
+
+Sale ID: 3  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Green smoothie	17.68	400	7072.00
+  Cuban sandwiche	18.50	2	37.00
+  Hazelnut in black ceramic bowl	27.35	2	54.70
+  Sale total: 7163.70
+
+Sale ID: 4  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Tomatoes	26.03	1	26.03
+  Plums	19.18	250	4795.00
+  Fresh blueberries	21.01	334	7017.34
+  Sale total: 11838.37
+
+Sale ID: 5  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Green smoothie	17.68	300	5304.00
+  Corn	13.55	68	921.40
+  French fries	18.32	33	604.56
+  Sale total: 6829.96
+
+Sale ID: 6  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Ground beef meat burger	11.73	78	914.94
+  Hazelnut in black ceramic bowl	27.35	2	54.70
+  Sweet fresh stawberry	29.45	87	2562.15
+  Homemade bread	17.48	1	17.48
+  Smoothie with chia seeds	25.26	46	1161.96
+  Corn	13.55	1	13.55
+  Plums	19.18	2	38.36
+  Fresh blueberries	21.01	46	966.46
+  Sale total: 5729.60
+
+Sale ID: 7  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Green smoothie	17.68	1	17.68
+  Corn	13.55	2	27.10
+  French fries	18.32	4	73.28
+  Ground beef meat burger	11.73	64	750.72
+  Hazelnut in black ceramic bowl	27.35	2	54.70
+  Sale total: 923.48
+
+Sale ID: 8  Date: 01/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Sweet fresh stawberry	29.45	3	88.35
+  Homemade bread	17.48	456	7970.88
+  Smoothie with chia seeds	25.26	2	50.52
+  Corn	13.55	5	67.75
+  Plums	19.18	645	12371.10
+  Fresh blueberries	21.01	-35	-735.35
+  Green smoothie	17.68	2	35.36
+  Sale total: 19848.61
+
+Sale ID: 9  Date: 02/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Corn	13.55	465	6300.75
+  French fries	18.32	20	366.40
+  Ground beef meat burger	11.73	4	46.92
+  Hazelnut in black ceramic bowl	27.35	1	27.35
+  Sweet fresh stawberry	29.45	131	3857.95
+  Homemade bread	17.48	9	157.32
+  Sale total: 10756.69
+
+Sale ID: 10  Date: 02/12/23
+  Product	UnitPrice	Quantity	LineTotal
+  Smoothie with chia seeds	25.26	13	328.38
+  Corn	13.55	678	9186.90
+  Plums	19.18	334	6406.12
+  Fresh blueberries	21.01	3445	72379.45
+  Green smoothie	17.68	-123	-2174.64
+  Corn	13.55	445	6029.75
+  Sale total: 92155.96
+
+Grand Total: 166568.23
+Elapsed time: 0.000378 seconds
