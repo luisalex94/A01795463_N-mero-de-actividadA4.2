@@ -1,0 +1,100 @@
+[
+  {
+    "hotel_id": 1,
+    "name": "Hotel Sol",
+    "address": "Calle Falsa 123",
+    "rooms": {
+      "101": 2,
+      "102": 2
+    }
+  },
+  {
+    "hotel_id": 2,
+    "name": "Hotel Luna",
+    "address": "Avenida Siempre Viva 742",
+    "rooms": {
+      "201": 3
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  },
+  {
+    "hotel_id": 3,
+    "name": "Hotel Estrella",
+    "address": "Plaza Central 5",
+    "rooms": {
+      "301": 2,
+      "302": 1
+    }
+  }
+]
