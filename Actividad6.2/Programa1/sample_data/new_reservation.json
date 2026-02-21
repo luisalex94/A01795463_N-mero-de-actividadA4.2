@@ -1,0 +1,8 @@
+{
+  "reservation_id": 200,
+  "customer_id": 11,
+  "hotel_id": 2,
+  "room_number": "201",
+  "start_date": "2026-03-02",
+  "end_date": "2026-03-03"
+}
