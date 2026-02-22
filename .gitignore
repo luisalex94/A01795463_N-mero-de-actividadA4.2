@@ -1,0 +1,13 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+
+# OS files
+.DS_Store
+thumbs.db
+
+# ignore Actividad6.2/Programa2
+Actividad6.2/Programa2/
